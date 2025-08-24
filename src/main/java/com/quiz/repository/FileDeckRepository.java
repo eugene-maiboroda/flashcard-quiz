@@ -25,7 +25,7 @@ public class FileDeckRepository implements DeckRepository {
     public void createDeck(Deck deck) {
         String id = norm(deck.getId());
         if (cache.containsKey(id)) {
-            throw new IllegalArgumentException("Немає такої колоди " + id);
+            throw new IllegalArgumentException("Колода вже існує  " + id);
         }
         cache.put(id, deck);
         persist();
@@ -35,7 +35,7 @@ public class FileDeckRepository implements DeckRepository {
     public void updateDeck(Deck deck) {
         String id = norm(deck.getId());
         if (!cache.containsKey(id)) {
-            throw new IllegalArgumentException("Немає такої колоди " + id);
+            throw new NoSuchElementException("Немає такої колоди " + id);
         }
         cache.put(id, deck);
         persist();

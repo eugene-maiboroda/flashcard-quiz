@@ -6,6 +6,7 @@ import com.quiz.repository.DeckRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
 
@@ -20,7 +21,7 @@ public class CardManagement {
     public void addCard(String deckId, Card card) {
 
         Deck deck = deckRepository.findDeckById(deckId)
-                .orElseThrow(() -> new IllegalArgumentException("Колоду не знайдено " + deckId));
+                .orElseThrow(() -> new NoSuchElementException("Колоду не знайдено " + deckId));
         if (card == null) {
             throw new IllegalArgumentException("Картка пуста");
         }
@@ -37,21 +38,21 @@ public class CardManagement {
 
     public List<Card> getAllCards(String deckId) {
         Deck deck = deckRepository.findDeckById(deckId)
-                .orElseThrow(() -> new IllegalArgumentException("Колоду не знайдено " + deckId));
+                .orElseThrow(() -> new NoSuchElementException("Колоду не знайдено " + deckId));
         List<Card> cards = new ArrayList<>(deck.getCards());
         return cards;
     }
 
     public void updateCard(String deckId, Card card) {
         Deck deck = deckRepository.findDeckById(deckId).orElseThrow(() ->
-                new IllegalArgumentException("Колоду не знайдено " + deckId));
+                new NoSuchElementException("Колоду не знайдено " + deckId));
         List<Card> updated = new ArrayList<>(deck.getCards());
 
         for (int i = 0; i < updated.size(); i++) {
             if (Objects.equals(updated.get(i).getId(), card.getId())) {
                 updated.set(i, card);
             } else {
-                throw new IllegalArgumentException("Карту не знайдено");
+                throw new NoSuchElementException("Карту не знайдено");
             }
         }
         deck.setCards(updated);
@@ -60,7 +61,7 @@ public class CardManagement {
 
     public void deleteCard(String deckId, String cardId) {
         Deck deck = deckRepository.findDeckById(deckId).orElseThrow(() ->
-                new IllegalArgumentException("Колоду не знайдено " + deckId));
+                new NoSuchElementException("Колоду не знайдено " + deckId));
         List<Card> updated = new ArrayList<>(deck.getCards());
         updated.removeIf(card -> Objects.equals(card.getId(), cardId));
         deck.setCards(updated);

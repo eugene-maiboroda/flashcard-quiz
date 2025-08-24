@@ -204,19 +204,23 @@ public class FlashCardController {
         try {
             cardManagement.addCard(deckId, card);
             consoleView.showMessage("Картка успішно додана");
-        } catch (IllegalArgumentException | UncheckedIOException e) {
+        } catch (IllegalArgumentException | UncheckedIOException | NoSuchElementException e) {
             consoleView.showMessage("Помилка додовання " + e.getMessage());
         }
     }
 
     private void showAllCard(String nameDeck, String deckId) {
-        List<Card> allCards = cardManagement.getAllCards(deckId);
+        try {
+            List<Card> allCards = cardManagement.getAllCards(deckId);
 
-        if (allCards.isEmpty()) {
-            consoleView.showMessage("Немає доступних карток у колоді " + nameDeck);
-            return;
+            if (allCards.isEmpty()) {
+                consoleView.showMessage("Немає доступних карток у колоді " + nameDeck);
+                return;
+            }
+            printCardsToChoice(nameDeck, allCards);
+        } catch (NoSuchElementException e) {
+            consoleView.showMessage(e.getMessage());
         }
-        printCardsToChoice(nameDeck, allCards);
     }
 
     private void updateCard(String nameDeck, String deckId) {
@@ -247,7 +251,7 @@ public class FlashCardController {
             newCard.setAnswer(answer);
             cardManagement.updateCard(deckId, newCard);
             consoleView.showMessage("Картка успішно змінена");
-        } catch (IllegalArgumentException | UncheckedIOException e) {
+        } catch (NoSuchElementException | UncheckedIOException e) {
             consoleView.showMessage("Помилка редагування " + e.getMessage());
         }
     }
@@ -271,7 +275,7 @@ public class FlashCardController {
             try {
                 cardManagement.deleteCard(deckId, selectCard.getId());
                consoleView.showMessage("Картка успішно видалена");
-            } catch (IllegalArgumentException | UncheckedIOException e) {
+            } catch (NoSuchElementException | UncheckedIOException e) {
                 consoleView.showMessage("Помилка видалення картки " +  e.getMessage());
             }
             } else {
