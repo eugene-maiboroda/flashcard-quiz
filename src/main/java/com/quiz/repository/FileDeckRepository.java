@@ -65,7 +65,9 @@ public class FileDeckRepository implements DeckRepository {
     private void initStorage() {
         try {
             Files.createDirectories(DATA_DIR);
-            if (Files.notExists(DECKS)) Files.writeString(DECKS, "[]");
+            if (Files.notExists(DECKS)) {
+                Files.writeString(DECKS, "[]");
+            }
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
