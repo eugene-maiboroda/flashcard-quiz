@@ -1,0 +1,33 @@
+[
+  {
+    "id": "deck-java",
+    "deckName": "Java",
+    "cards": [
+      { "id": "java-1",  "question": "Мова, що працює на JVM?",           "answer": "Java" },
+      { "id": "java-2",  "question": "Машина, що виконує байткод?",       "answer": "JVM" },
+      { "id": "java-3",  "question": "Набір для запуску Java?",           "answer": "JRE" },
+      { "id": "java-4",  "question": "Набір для розробки Java?",          "answer": "JDK" },
+      { "id": "java-5",  "question": "Ключове слово для спадкування?",    "answer": "extends" },
+      { "id": "java-6",  "question": "Ключове слово для інтерфейсу?",     "answer": "interface" },
+      { "id": "java-7",  "question": "Ключове слово для класу?",          "answer": "class" },
+      { "id": "java-8",  "question": "Клас-обгортка для int?",            "answer": "Integer" },
+      { "id": "java-10", "question": "Тип колекції без дублікатів?",      "answer": "Set" }
+    ]
+  },
+  {
+    "id": "deck-english",
+    "deckName": "English",
+    "cards": [
+      { "id": "en-1",  "question": "book (переклад слова)",      "answer": "книга" },
+      { "id": "en-2",  "question": "house (переклад слова)",     "answer": "будинок" },
+      { "id": "en-3",  "question": "computer (переклад слова)",  "answer": "комп’ютер" },
+      { "id": "en-4",  "question": "language (переклад слова)",  "answer": "мова" },
+      { "id": "en-5",  "question": "question (переклад слова)",  "answer": "питання" },
+      { "id": "en-6",  "question": "answer (переклад слова)",    "answer": "відповідь" },
+      { "id": "en-7",  "question": "keyboard (переклад слова)",  "answer": "клавіатура" },
+      { "id": "en-8",  "question": "screen (переклад слова)",    "answer": "екран" },
+      { "id": "en-9",  "question": "developer (переклад слова)", "answer": "розробник" },
+      { "id": "en-10", "question": "project (переклад слова)",   "answer": "проєкт" }
+    ]
+  }
+]
