@@ -13,8 +13,7 @@ public class FileDeckRepository implements DeckRepository {
     private static final Path DATA_DIR = Paths.get("data");
     private static final Path DECKS = DATA_DIR.resolve("decks.json");
 
-    private final ObjectMapper mapper = new ObjectMapper()
-            .findAndRegisterModules();
+    private final ObjectMapper mapper = new ObjectMapper();
     private final Map<String, Deck> cache = new LinkedHashMap<>();
 
     public FileDeckRepository() {
@@ -42,7 +41,6 @@ public class FileDeckRepository implements DeckRepository {
         persist();
     }
 
-
     @Override
     public List<Deck> getALLDecks() {
         return new ArrayList<>(cache.values());
@@ -56,10 +54,10 @@ public class FileDeckRepository implements DeckRepository {
     @Override
     public boolean deleteeDeck(String deckId) {
 
-        Deck removed = cache.remove(norm(deckId));
-        if (removed == null) {
-            return false;
+        if (!cache.containsKey(deckId)) {
+           return false;
         }
+        cache.remove(norm(deckId));
         persist();
         return true;
     }

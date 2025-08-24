@@ -15,14 +15,14 @@ public class CardManagement {
 
     public CardManagement(DeckRepository deckRepository) {
         this.deckRepository = deckRepository;
-
     }
+
     public void addCard(String deckId, Card card) {
 
-      Deck deck = deckRepository.findDeckById(deckId)
-              .orElseThrow(() -> new IllegalArgumentException("Колоду не знайдено " +  deckId));
+        Deck deck = deckRepository.findDeckById(deckId)
+                .orElseThrow(() -> new IllegalArgumentException("Колоду не знайдено " + deckId));
         if (card == null) {
-            throw  new IllegalArgumentException("Картка пуста");
+            throw new IllegalArgumentException("Картка пуста");
         }
 
         List<Card> updated = new ArrayList<>(deck.getCards());
@@ -33,16 +33,18 @@ public class CardManagement {
         updated.add(card);
         deck.setCards(updated);
         deckRepository.updateDeck(deck);
-  }
+    }
+
     public List<Card> getAllCards(String deckId) {
         Deck deck = deckRepository.findDeckById(deckId)
                 .orElseThrow(() -> new IllegalArgumentException("Колоду не знайдено " + deckId));
         List<Card> cards = new ArrayList<>(deck.getCards());
         return cards;
     }
+
     public void updateCard(String deckId, Card card) {
         Deck deck = deckRepository.findDeckById(deckId).orElseThrow(() ->
-                new IllegalArgumentException("Колоду не знайдено " +  deckId));
+                new IllegalArgumentException("Колоду не знайдено " + deckId));
         List<Card> updated = new ArrayList<>(deck.getCards());
 
         for (int i = 0; i < updated.size(); i++) {
@@ -55,13 +57,13 @@ public class CardManagement {
         deck.setCards(updated);
         deckRepository.updateDeck(deck);
     }
-    public boolean deleteCard(String deckId,  String cardId) {
+
+    public void deleteCard(String deckId, String cardId) {
         Deck deck = deckRepository.findDeckById(deckId).orElseThrow(() ->
-                 new IllegalArgumentException("Колоду не знайдено "  +  deckId));
+                new IllegalArgumentException("Колоду не знайдено " + deckId));
         List<Card> updated = new ArrayList<>(deck.getCards());
-        boolean removed = updated.removeIf(card -> Objects.equals(card.getId(), cardId));
+        updated.removeIf(card -> Objects.equals(card.getId(), cardId));
         deck.setCards(updated);
         deckRepository.updateDeck(deck);
-        return removed;
     }
 }

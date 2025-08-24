@@ -3,8 +3,8 @@ package com.quiz.service;
 import com.quiz.model.Deck;
 import com.quiz.repository.DeckRepository;
 
-import java.io.IOException;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 public class DeckManagement {
@@ -32,7 +32,10 @@ public class DeckManagement {
 
     }
 
-    public boolean deleteDeck(String idDeck) {
-        return deckRepository.deleteeDeck(idDeck);
+    public void deleteDeck(String idDeck) {
+        if (!deckRepository.deleteeDeck(idDeck)) {
+            throw new NoSuchElementException("Колода не знайдена " + idDeck);
+        }
+
     }
 }

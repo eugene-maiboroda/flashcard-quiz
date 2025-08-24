@@ -3,7 +3,6 @@ package com.quiz.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -38,7 +37,6 @@ public class Deck {
         }
         this.deckName = res;
     }
-
 
     public List<Card> getCards() {
         return Collections.unmodifiableList(cards);

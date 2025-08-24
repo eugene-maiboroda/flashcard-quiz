@@ -127,9 +127,11 @@ public class FlashCardController {
         if (confirm.equals("y") || confirm.equals("yes") || confirm.equals("так")) {
             try {
                 deckManager.deleteDeck(selectDeck.getId());
-                consoleView.showMessage("Колода успішно видалена");
-            } catch (IllegalArgumentException | UncheckedIOException e) {
-                consoleView.showMessage("Помилка видалення" + e.getMessage());
+                consoleView.showMessage("Колоду успішно видалено");
+            } catch (NoSuchElementException e) {
+                consoleView.showMessage("Колоду не знайдено");
+            } catch (UncheckedIOException e) {
+                consoleView.showMessage("Помилка доступу до файлу: " + e.getMessage());
             }
         } else {
             consoleView.showMessage("Видалення відмінено");
