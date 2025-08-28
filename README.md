@@ -3,7 +3,7 @@
 **Flashcard Quiz** is a console-based application for practicing knowledge with flashcards.  
 You can create decks, add questions and answers, and test yourself in quiz mode.
 
-### ✨ Features
+### Features
 The application provides functionality to:
 * Create and delete decks
 * Add, edit, and delete flashcards
@@ -12,7 +12,7 @@ The application provides functionality to:
 * Quiz mode with results and scoring
 * Console-based UI with menu navigation
 
-### 📂 Project Structure
+### Project Structure
 ```
 src/main/java/com/quiz
  ├── model        → POJO classes (`Card`, `Deck`)
@@ -22,7 +22,7 @@ src/main/java/com/quiz
  └── StartApp     → Entry point
 ```
 
-### 🚀 Getting Started
+### Getting Started
 
 **Requirements**
 * Java 21 (or newer)
@@ -31,10 +31,9 @@ src/main/java/com/quiz
 **Clone**
 ```bash
 git clone https://github.com/eugene-maiboroda/flashcard-quiz.git
-cd flashcard-quiz
 ```
 
-### 📸 Console Preview
+### Console Preview
 
 **Main Menu:**
 ```
@@ -58,7 +57,7 @@ cd flashcard-quiz
 0. <- Return to main menu
 ```
 
-### 🛠 Technologies
+### Technologies
 * Java 21
 * Maven
 * Jackson (for JSON serialization)
