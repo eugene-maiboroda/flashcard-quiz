@@ -30,7 +30,7 @@ src/main/java/com/quiz
 
 **Clone**
 ```bash
-git clone https://github.com/USERNAME/flashcard-quiz.git
+git clone https://github.com/eugene-maiboroda/flashcard-quiz.git
 cd flashcard-quiz
 ```
 
